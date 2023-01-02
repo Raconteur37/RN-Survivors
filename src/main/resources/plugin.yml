@@ -1,0 +1,25 @@
+name: Survivors
+version: 1.0
+author: RenatusNetwork
+main: com.renatusnetwork.survivors.Survivors
+api-version: 1.8.8
+description: The RN Survivors game
+commands:
+  start:
+    description: Starts the gamemode
+    aliases: start
+  giveitems:
+    description: Gives everyone item token
+    aliases: giveitems
+  stoptimers:
+    description: Stops all timers
+    aliases: stoptimers
+  startwave:
+    description: Summons zombies around your location
+    aliases: summonZombies
+  stopwave:
+    description: Stops the zombies wave
+    aliases: stopwave
+  setmonsterspawn:
+    description: Sets your position as a monster spawn
+    aliases: setmonsterspawn
