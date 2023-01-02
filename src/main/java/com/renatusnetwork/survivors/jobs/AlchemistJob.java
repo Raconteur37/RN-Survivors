@@ -30,7 +30,6 @@ public class AlchemistJob {
         player.getInventory().addItem(new ItemStack(Material.SIGN,1));
 
         player.getInventory().addItem(new ItemStack(BlacksmithJob.getBlacksmithPick(player)));
-        // Testing
 
         ItemStack egg = new ItemStack(Material.MONSTER_EGG,32);
         egg.setDurability((short) 55);
