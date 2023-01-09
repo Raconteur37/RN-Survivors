@@ -6,9 +6,11 @@ import com.renatusnetwork.survivors.utils.ColorUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BlacksmithJob {
 
@@ -26,12 +28,10 @@ public class BlacksmithJob {
         ItemStack ironBars = new ItemStack(Material.IRON_FENCE,24);
         player.getInventory().addItem(ironBars);
 
-        ItemStack lavaBucket = new ItemStack(Material.LAVA_BUCKET,1);
-        player.getInventory().addItem(lavaBucket);
-        player.getInventory().addItem(lavaBucket);
-
         ItemStack anvil = new ItemStack(Material.ANVIL,1);
         player.getInventory().addItem(anvil);
+
+        player.getInventory().addItem(getInfoBook(player));
 
         ItemStack armorstand = new ItemStack(Material.ARMOR_STAND,2);
         player.getInventory().addItem(armorstand);
@@ -140,6 +140,32 @@ public class BlacksmithJob {
         itemMeta.spigot().setUnbreakable(true);
         item.setItemMeta(itemMeta);
         return item;
+    }
+
+    public static ItemStack getInfoBook(Player player) {
+        ItemStack writtenBook = new ItemStack(Material.WRITTEN_BOOK);
+        BookMeta bookMeta = (BookMeta) writtenBook.getItemMeta();
+        bookMeta.setTitle("Blacksmith Guide");
+        bookMeta.setAuthor("Renatus");
+
+        List<String> pages = new ArrayList<String>();
+        pages.add("--==Blacksmith...      " +
+                "As a blaksmith you need to forge weapons and armor for your team!"); // Page 1
+        pages.add("--==Instructions...    " +
+                "Place down coal and mine with with your pickaxe, then you have a chance to gain raw mineral. Heat up raw mineral in the furnace to get refined minerals."); // Page 2
+        pages.add("When you have refined minerals, you can give it to a builder or LEFT click an ANVIL to forge an armor token or a weapon token."); // Page 3
+        pages.add("--==Recipes==--");
+        pages.add("No crafting recipes");
+
+        bookMeta.setPages(pages);
+
+        writtenBook.setItemMeta(bookMeta);
+
+        PlayerStats playerStats = PlayerManager.getPlayerStats(player);
+        playerStats.addEssentialItem(writtenBook);
+
+
+        return writtenBook;
     }
 
 

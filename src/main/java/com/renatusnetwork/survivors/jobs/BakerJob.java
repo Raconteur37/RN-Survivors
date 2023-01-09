@@ -6,9 +6,11 @@ import com.renatusnetwork.survivors.utils.ColorUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BakerJob {
 
@@ -25,6 +27,8 @@ public class BakerJob {
         player.getInventory().addItem(new ItemStack(Material.GLASS,32));
 
         player.getInventory().addItem(new ItemStack(Material.GRASS,9));
+
+        player.getInventory().addItem(getInfoBook(player));
 
         player.getInventory().addItem(new ItemStack(Material.CHEST,2));
 
@@ -113,6 +117,40 @@ public class BakerJob {
         itemMeta.setLore(lore);
         item.setItemMeta(itemMeta);
         return item;
+    }
+
+    public static ItemStack getInfoBook(Player player) {
+        ItemStack writtenBook = new ItemStack(Material.WRITTEN_BOOK);
+        BookMeta bookMeta = (BookMeta) writtenBook.getItemMeta();
+        bookMeta.setTitle("Baker Guide");
+        bookMeta.setAuthor("Renatus");
+
+        List<String> pages = new ArrayList<String>();
+        pages.add("--==Baker...      " +
+                "As a baker, you need to make food and golden apples to keep your survivors bellies full!"); // Page 1
+        pages.add("--==Instructions...    " +
+                "Place down your grass then use bonemeal to get seeds from the grass. Use seeds to craft sugar and then infuse that sugar to get ingredients"); // Page 2
+        pages.add("--==Recipes==--         "); // Page 3
+        pages.add("--==Sugar==--      " +
+                "   Fill all 9 spots in the crafting table with seeds ");
+        pages.add("--==Ingredients==--      " +
+                "   Right click sugar on your flower pot to get a random ingredient ");
+        pages.add("--==Pie==--      " +
+                "   In the middle of the crafting table, put sugar in the middle then to the left and right put the spice ");
+        pages.add("--==Golden Apple==--      " +
+                "   Put sugar in the middle of the crafting table then surround it with sweetener ");
+        pages.add("--==Cake==--      " +
+                "   In the middle of the crafting table, put sugar in the middle then to the left and right put wheat ");
+
+        bookMeta.setPages(pages);
+
+        writtenBook.setItemMeta(bookMeta);
+
+        PlayerStats playerStats = PlayerManager.getPlayerStats(player);
+        playerStats.addEssentialItem(writtenBook);
+
+
+        return writtenBook;
     }
 
 

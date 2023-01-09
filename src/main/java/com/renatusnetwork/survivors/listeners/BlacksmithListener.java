@@ -56,7 +56,7 @@ public class BlacksmithListener implements Listener {
                 }
                 roll = (int) (Math.random() * (100 - 1)) + 1;
                 if (roll <= 2) {
-                    player.getInventory().addItem(blacksmithCharm);
+                    //player.getInventory().addItem(blacksmithCharm);
                 }
             }
 
@@ -100,7 +100,7 @@ public class BlacksmithListener implements Listener {
 
                 roll = (int) (Math.random() * (100 - 1)) + 1;
                 if (roll <= 3) {
-                    player.getInventory().addItem(blacksmithCharm);
+                    //player.getInventory().addItem(blacksmithCharm);
                 }
 
             }

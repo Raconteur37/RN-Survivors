@@ -6,9 +6,11 @@ import com.renatusnetwork.survivors.utils.ColorUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BuilderJob {
 
@@ -31,6 +33,7 @@ public class BuilderJob {
 
         player.getInventory().addItem(new ItemStack(Material.TORCH,32));
 
+        player.getInventory().addItem(getInfoBook(player));
 
         refillItems(player);
 
@@ -84,6 +87,33 @@ public class BuilderJob {
         PlayerStats playerStats = PlayerManager.getPlayerStats(player);
         playerStats.addEssentialItem(item);
         return item;
+    }
+
+
+    public static ItemStack getInfoBook(Player player) {
+        ItemStack writtenBook = new ItemStack(Material.WRITTEN_BOOK);
+        BookMeta bookMeta = (BookMeta) writtenBook.getItemMeta();
+        bookMeta.setTitle("Builder Guide");
+        bookMeta.setAuthor("Renatus");
+
+        List<String> pages = new ArrayList<String>();
+        pages.add("--==Builder...      " +
+                "As a builder, its your job to build for the team " +
+                "and create a solid base for the survivors"); // Page 1
+        pages.add("--==Instructions...    " +
+                "Place blocks and build a base, right click your other book to regain resources"); // Page 2
+        pages.add("--==Recipes...   " +
+                " None"); // Page 3
+
+        bookMeta.setPages(pages);
+
+        writtenBook.setItemMeta(bookMeta);
+
+        PlayerStats playerStats = PlayerManager.getPlayerStats(player);
+        playerStats.addEssentialItem(writtenBook);
+
+
+        return writtenBook;
     }
 
 

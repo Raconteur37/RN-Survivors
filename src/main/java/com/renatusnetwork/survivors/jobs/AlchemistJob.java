@@ -6,9 +6,11 @@ import com.renatusnetwork.survivors.utils.ColorUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AlchemistJob {
 
@@ -24,6 +26,8 @@ public class AlchemistJob {
         player.getInventory().addItem(new ItemStack(Material.BREWING_STAND_ITEM,2));
 
         player.getInventory().addItem(new ItemStack(Material.CHEST,2));
+
+        player.getInventory().addItem(getInfoBook(player));
 
         player.getInventory().addItem(new ItemStack(Material.GLASS_BOTTLE,6));
 
@@ -82,6 +86,41 @@ public class AlchemistJob {
         PlayerStats playerStats = PlayerManager.getPlayerStats(player);
         playerStats.addEssentialItem(blacksmithPick);
         return blacksmithPick;
+    }
+
+    public static ItemStack getInfoBook(Player player) {
+        ItemStack writtenBook = new ItemStack(Material.WRITTEN_BOOK);
+        BookMeta bookMeta = (BookMeta) writtenBook.getItemMeta();
+        bookMeta.setTitle("Alchemist Guide");
+        bookMeta.setAuthor("Renatus");
+
+        List<String> pages = new ArrayList<String>();
+        pages.add("--==Alchemist...      " +
+                "As an alchemist you need to create potions for your team and make sure your team can protect themselves"); // Page 1
+        pages.add("--==Instructions...    " +
+                "Place down your slimes then kill them to get slimeballs, then use slimeballs to craft potion items and make potions!"); // Page 2
+        pages.add("--==Recipes==--         "); // Page 3
+        pages.add("--==Awkward Potion==--      " +
+                "   Make a U shape in the crafting table with slimeballs ");
+        pages.add("--==Sulphur==--      " +
+                "   Make an hourglass shape with slimeballs in the crafting table ");
+        pages.add("--==Blaze Powder==--      " +
+                "   Make a O in the crafting table with the slimeballs ");
+        pages.add("--==Glistening Melon==--      " +
+                "   Make a stair shape facing left with slimeballs in the crafting table ");
+        pages.add("--==Ghast Tear==--      " +
+                "   Make a | straight in the middle of the crafting table with slimeballs ");
+
+
+        bookMeta.setPages(pages);
+
+        writtenBook.setItemMeta(bookMeta);
+
+        PlayerStats playerStats = PlayerManager.getPlayerStats(player);
+        playerStats.addEssentialItem(writtenBook);
+
+
+        return writtenBook;
     }
 
 
