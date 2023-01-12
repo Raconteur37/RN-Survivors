@@ -150,7 +150,7 @@ public class BlacksmithJob {
 
         List<String> pages = new ArrayList<String>();
         pages.add("--==Blacksmith...      " +
-                "As a blaksmith you need to forge weapons and armor for your team!"); // Page 1
+                "As a blacksmith you need to forge weapons and armor for your team!"); // Page 1
         pages.add("--==Instructions...    " +
                 "Place down coal and mine with with your pickaxe, then you have a chance to gain raw mineral. Heat up raw mineral in the furnace to get refined minerals."); // Page 2
         pages.add("When you have refined minerals, you can give it to a builder or LEFT click an ANVIL to forge an armor token or a weapon token."); // Page 3

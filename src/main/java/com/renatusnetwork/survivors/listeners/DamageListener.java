@@ -3,7 +3,9 @@ package com.renatusnetwork.survivors.listeners;
 import com.renatusnetwork.survivors.managers.PlayerManager;
 import com.renatusnetwork.survivors.objects.PlayerStats;
 import com.renatusnetwork.survivors.utils.ColorUtils;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -31,6 +33,41 @@ public class DamageListener implements Listener {
                     event.setCancelled(true);
 
                     playerStatsAttacker.getPlayer().sendMessage(ColorUtils.translateColor("&cDon't attack your fellow survivors!"));
+
+                }
+
+                if (playerStatsAttacker.isMonster() && playerStatsVictim.isMonster()) {
+
+                    event.setCancelled(true);
+
+                    playerStatsAttacker.getPlayer().sendMessage(ColorUtils.translateColor("&cDon't attack your fellow monsters!"));
+
+                }
+
+                if (event.getDamager() instanceof Arrow) {
+                    if (((Arrow) event.getDamager()).getShooter() instanceof Player) {
+
+                        Player shooter = (Player) ((Arrow) event.getDamager()).getShooter();
+
+                        PlayerStats shooterStats = PlayerManager.getPlayerStats(shooter);
+
+                        if ((!shooterStats.isMonster() && !playerStatsVictim.isMonster())) {
+
+                            event.setCancelled(true);
+
+                            playerStatsAttacker.getPlayer().sendMessage(ColorUtils.translateColor("&cDon't attack your fellow survivors!"));
+
+                        }
+
+                        if ((shooterStats.isMonster() && playerStatsVictim.isMonster())) {
+
+                            event.setCancelled(true);
+
+                            playerStatsAttacker.getPlayer().sendMessage(ColorUtils.translateColor("&cDon't attack your fellow monsters!"));
+
+                        }
+
+                    }
 
                 }
 

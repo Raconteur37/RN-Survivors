@@ -21,7 +21,7 @@ public class StartCMD implements CommandExecutor {
         }
 
         if (sender.isOp()) {
-            BroadcastUtils.broadcastTitle("Balls", "miniballs");
+            BroadcastUtils.broadcastTitle("Survive", "RN-Survivors");
 
             for (Player player : Bukkit.getServer().getOnlinePlayers()) {
                 //if (!player.equals(sender)){

@@ -33,6 +33,7 @@ public class TimerManager {
         if (exists(title)) {
             BukkitTask bukkitTask = timers.get(title);
             bukkitTask.cancel();
+            timers.remove(title);
         }
     }
 

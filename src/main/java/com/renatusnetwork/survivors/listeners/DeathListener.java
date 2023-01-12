@@ -46,6 +46,8 @@ public class DeathListener implements Listener {
 
             playerStats.setMonsterType("none");
 
+            player.getInventory().clear();
+
             player.teleport(GameManager.getMonsterSpawn());
 
             ItemManager.giveMonsterToken(player);
