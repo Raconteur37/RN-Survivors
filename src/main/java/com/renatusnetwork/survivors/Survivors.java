@@ -51,6 +51,7 @@ public class Survivors extends JavaPlugin {
         getCommand("startwave").setExecutor(new SendWaveCMD());
         getCommand("stopwave").setExecutor(new StopWaveCMD());
         getCommand("setmonsterspawn").setExecutor(new SetMonsterSpawnCMD());
+        getCommand("win").setExecutor(new WinCMD());
 
 
     }

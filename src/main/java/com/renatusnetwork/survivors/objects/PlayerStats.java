@@ -14,12 +14,21 @@ public class PlayerStats {
     private boolean isMonster = false;
     private String bakerCraftType;
     private String monsterType = "none";
+    private int kills = 0;
 
     private ArrayList<ItemStack> essentialItemsList = new ArrayList<>();
 
     public PlayerStats(Player player) {
         this.player = player;
         uuid = player.getUniqueId();
+    }
+
+    public void addKill() {
+        kills++;
+    }
+
+    public int getKills() {
+        return kills;
     }
 
     public void setType(String type) {

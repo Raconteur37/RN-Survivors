@@ -4,6 +4,7 @@ import com.renatusnetwork.survivors.Survivors;
 import com.renatusnetwork.survivors.items.ItemManager;
 import com.renatusnetwork.survivors.managers.TimerManager;
 import com.renatusnetwork.survivors.timers.Timers;
+import com.renatusnetwork.survivors.utils.BroadcastUtils;
 import com.renatusnetwork.survivors.utils.ColorUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
@@ -35,6 +36,8 @@ public class SendWaveCMD implements CommandExecutor {
             Location loc = player.getLocation();
 
             Timers.summonZombies(loc,"wavetimer");
+
+            BroadcastUtils.broadcastTitle(ColorUtils.translateColor("&4Zombies Appear"), "Brrrrrr");
 
 
         }

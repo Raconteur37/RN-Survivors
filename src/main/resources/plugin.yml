@@ -9,8 +9,8 @@ commands:
     description: Starts the gamemode
     aliases: start
   giveitems:
-    description: Gives everyone item token
-    aliases: giveitems
+    description: Gives everyone item token and controls stats
+    aliases: [giveitems,stats]
   stoptimers:
     description: Stops all timers
     aliases: stoptimers
@@ -23,3 +23,6 @@ commands:
   setmonsterspawn:
     description: Sets your position as a monster spawn
     aliases: setmonsterspawn
+  win:
+    description: Declares a winning team
+    aliases: win

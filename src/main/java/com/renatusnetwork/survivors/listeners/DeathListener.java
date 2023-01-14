@@ -24,6 +24,12 @@ public class DeathListener implements Listener {
 
         PlayerStats playerStats = PlayerManager.getPlayerStats(player);
 
+        if (player.getKiller() instanceof Player) {
+            Player killer = player.getKiller();
+            PlayerStats killerStats = PlayerManager.getPlayerStats(killer);
+            killerStats.addKill();
+        }
+
         if (!playerStats.isMonster()) {
             player.getWorld().spawnEntity(player.getLocation(), EntityType.LIGHTNING);
             Bukkit.broadcastMessage(ColorUtils.translateColor(""+player.getDisplayName() + " &lHAS FALLEN"));

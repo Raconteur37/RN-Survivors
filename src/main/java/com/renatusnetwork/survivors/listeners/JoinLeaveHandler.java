@@ -3,6 +3,7 @@ package com.renatusnetwork.survivors.listeners;
 import com.renatusnetwork.survivors.managers.JobChanceManager;
 import com.renatusnetwork.survivors.managers.PlayerManager;
 import com.renatusnetwork.survivors.objects.PlayerStats;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,6 +28,11 @@ public class JoinLeaveHandler implements Listener {
         PlayerStats playerStats = PlayerManager.getPlayerStats(player);
 
         if (playerStats != null) {
+
+            if (!playerStats.isMonster()) {
+                Bukkit.broadcastMessage(player.getDisplayName() + " has left as a survivor");
+            }
+
             String type = playerStats.getType();
 
             JobChanceManager.editJobCount(type,false);
